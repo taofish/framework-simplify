@@ -1,5 +1,5 @@
-import { Observer } from './observer'
-import { Compiler } from './compiler'
+import { Observer } from './observer.js'
+import { Compiler } from './compiler.js'
 
 export class Vue {
     $options = null
@@ -15,7 +15,7 @@ export class Vue {
         } = options || {}
         this.$data = data || {}
         this.$el = typeof el === 'string' ? document.querySelector(el) : el
-        // 把this.$data代理到vm上
+        // 代理数据到vue实例上
         this._proxyData(data)
         // 数据劫持，把数据转换成响应式
         new Observer(data)
@@ -23,7 +23,24 @@ export class Vue {
         new Compiler(this)
     }
 
-    _proxyData() {
-
+    /**
+     * 代理data数据到Vue实例上
+     * @param data
+     * @private
+     */
+    _proxyData(data) {
+        Object.keys(data).forEach(key => {
+            Object.defineProperty(this, key, {
+                enumerable: true,
+                configurable: true,
+                get() {
+                    return data[key]
+                },
+                set(newValue) {
+                    if (data[key] === newValue) return
+                    data[key] = newValue
+                }
+            })
+        })
     }
 }

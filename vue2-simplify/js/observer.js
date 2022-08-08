@@ -1,4 +1,4 @@
-import { Dep } from './dep'
+import { Dep } from './dep.js'
 
 /**
  * 数据劫持

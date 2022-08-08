@@ -1,4 +1,4 @@
-import { Dep } from './dep'
+import { Dep } from './dep.js'
 
 /**
  * 订阅者
