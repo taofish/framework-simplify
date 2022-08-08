@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Layout</title>
+    <style>
+    .two-column {
+        height: 100px;
+    }
+
+    .two-column__left {
+        float: left;
+        width: 200px;
+        height: 100%;
+        background: lightcoral;
+    }
+
+    .two-column__right {
+        margin-left: 200px;
+        height: 100%;
+        background: lightgreen;
+    }
+
+    .two-column-v1 {
+        height: 100px;
+    }
+
+    .two-column-v1__left {
+        float: left;
+        width: 200px;
+        height: 100%;
+        background: lightcoral;
+    }
+
+    .two-column-v1__right {
+        height: 100%;
+        overflow: auto;
+        background: lightgreen;
+    }
+
+    .two-column-v2 {
+        display: flex;
+        height: 100px;
+    }
+
+    .two-column-v2__left {
+        width: 200px;
+        height: 100%;
+        background: lightcoral;
+    }
+
+    .two-column-v2__right {
+        flex: 1;
+        height: 100%;
+        background: lightgreen;
+    }
+
+    .two-column-v3 {
+        height: 100px;
+        position: relative;
+    }
+
+    .two-column-v3__left {
+        width: 200px;
+        height: 100%;
+        position: absolute;
+        background: lightcoral;
+    }
+
+    .two-column-v3__right {
+        height: 100%;
+        margin-left: 200px;
+        background: lightgreen;
+    }
+
+    .two-column-v4 {
+        height: 100px;
+        position: relative;
+    }
+
+    .two-column-v4__left {
+        width: 200px;
+        height: 100%;
+        background: lightcoral;
+    }
+
+    .two-column-v4__right {
+        position: absolute;
+        left: 200px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: lightgreen;
+    }
+
+    .three-column {
+        padding: 0 150px 0 200px;
+        overflow: auto;
+    }
+
+    .three-column::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    .three-column__center {
+        width: 100%;
+        float: left;
+        background: lightcoral;
+    }
+
+    .three-column__left {
+        width: 200px;
+        margin-left: -100%;
+        float: left;
+        position: relative;
+        left: -200px;
+        background: lightcyan;
+    }
+
+    .three-column__right {
+        width: 150px;
+        margin-right: -150px;
+        float: left;
+        background: lightgreen;
+    }
+
+    .three-column-v1::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    .three-column-v1__center-box {
+        width: 100%;
+        height: 200px;
+        float: left;
+        background: lightpink;
+    }
+
+    .three-column-v1__center {
+        margin: 0 190px
+    }
+
+    .three-column-v1__left {
+        width: 190px;
+        height: 200px;
+        margin-left: -100%;
+        float: left;
+        background: lightsalmon;
+    }
+
+    .three-column-v1__right {
+        width: 190px;
+        height: 200px;
+        margin-left: -190px;
+        float: left;
+        background: lightskyblue;
+    }
+    </style>
+</head>
+<body>
+<h1>两栏布局（左侧固定+右侧自适应）</h1>
+<p>1、利用浮动，左边元素宽度固定，设置向左浮动。右边元素margin-left设为固定宽度。右边元素width默认为auto，自动撑满父元素。</p>
+<div class="two-column">
+    <div class="two-column__left">左侧</div>
+    <div class="two-column__right">右侧</div>
+</div>
+<p>2、利用浮动，左边元素宽度固定，设置向左浮动。右边元素设置overflow:hidden触发BFC（BFC区域不会与浮动元素重叠）。</p>
+<div class="two-column-v1">
+    <div class="two-column-v1__left">左侧</div>
+    <div class="two-column-v1__right">右侧</div>
+</div>
+<p>3、利用flex，左边元素宽度固定。右边元素设置flex:1。</p>
+<div class="two-column-v2">
+    <div class="two-column-v2__left">左侧</div>
+    <div class="two-column-v2__right">右侧</div>
+</div>
+<p>4、利用absolute（绝对定位），父元素relative（相对定位）。左边元素设置position:absolute，宽度固定。右边元素的margin-left设为左边元素的宽度值。</p>
+<div class="two-column-v3">
+    <div class="two-column-v3__left">左侧</div>
+    <div class="two-column-v3__right">右侧</div>
+</div>
+<p>5、利用absolute（绝对定位），父元素relative（相对定位）。左边元素宽度固定。右边元素position:absolute，left为左边宽度大小，其余方向（top、right、bottom）为0。</p>
+<div class="two-column-v4">
+    <div class="two-column-v4__left">左侧</div>
+    <div class="two-column-v4__right">右侧</div>
+</div>
+
+<h1>三栏布局（圣杯布局和双飞翼布局）</h1>
+<p>圣杯布局和双飞翼布局布局目的：</p>
+<ul>
+    <li>三栏布局，中间一栏最先加载和渲染</li>
+    <li>两侧宽度固定，中间宽度自适应</li>
+    <li>一般用于PC网页</li>
+</ul>
+<p>圣杯布局和双飞翼布局技术总结：</p>
+<ul>
+    <li>使用float布局</li>
+    <li>两侧使用margin负值，以便和中间内容横向重叠</li>
+    <li>防止中间内容被两侧覆盖，圣杯布局用padding，双飞翼布局用margin</li>
+</ul>
+<p>1、圣杯布局</p>
+<div class="three-column">
+    <div class="three-column__center">我是中间</div>
+    <div class="three-column__left">我是左边</div>
+    <div class="three-column__right">我是右边</div>
+</div>
+<p>1、双飞翼布局</p>
+<div class="three-column-v1">
+    <div class="three-column-v1__center-box">
+        <div class="three-column-v1__center">我是中间</div>
+    </div>
+    <div class=" three-column-v1__left">我是左边</div>
+    <div class="three-column-v1__right">我是右边</div>
+</div>
+</body>
+</html>
