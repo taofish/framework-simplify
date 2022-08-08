@@ -1,4 +1,4 @@
-# Vue 2 simplify
+# Vue 2 简化版
 
 ### Vue
 - Vue总入口
