@@ -1,6 +1,8 @@
 /**
  * 发布者
- * 每个被监视的属性都有一个dep，用来存储依赖关系
+ * - 把数据定义为一个发布者
+ * - 收集Watcher（订阅者），建立依赖关系
+ * - 数据变化时，给所有Watcher（订阅者）发布通知
  */
 export class Dep {
     static target = null // 暂存需要被添加的订阅者（watcher）

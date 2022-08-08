@@ -2,7 +2,8 @@ import { Dep } from './dep.js'
 
 /**
  * 订阅者
- * 订阅依赖的变化
+ * - 把依赖数据变化而变化的内容（插值表达式、指令等）定义为订阅者
+ * - 订阅Dep（发布者-数据），接收通知同步变化并更新视图
  * eg: v-text:xxx、{{xxx}}
  */
 export class Watcher {

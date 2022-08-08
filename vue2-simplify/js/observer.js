@@ -2,7 +2,9 @@ import { Dep } from './dep.js'
 
 /**
  * 数据劫持
- * 把data中的属性转换成getter/setter
+ * - 遍历数据，使用Dep把数据转换为发布者
+ * - 遍历数据，把数据转换为响应式（getter/setter）
+ * - 数据变化时，使用Dep（发布者）给Watcher（订阅者）发送通知
  */
 export class Observer {
     constructor(data) {

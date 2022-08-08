@@ -1,6 +1,13 @@
 import { Observer } from './observer.js'
 import { Compiler } from './compiler.js'
 
+/**
+ * Vue
+ * - Vue总入口
+ * - 代理数据到Vue实例上
+ * - 调用Observer，把数据转换为响应式
+ * - 调用Compiler，编译模版
+ */
 export class Vue {
     $options = null
     $data = null
