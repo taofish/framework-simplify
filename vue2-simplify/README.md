@@ -24,3 +24,7 @@
 - 编译模版，把插值表达式、指令等转换为Watcher（订阅者）
 - 接收Dep（发布者-数据）通知，更新视图
 
+# 参考
+- https://github.com/vuejs/vue/tree/2.6
+- https://zhuanlan.zhihu.com/p/337924416
+
