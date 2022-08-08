@@ -1,2 +1,2 @@
-# framework-simplify
-框架简化版实现
+# frontennd-tech
+前端技术
