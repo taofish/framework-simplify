@@ -6,7 +6,7 @@
 - flex布局
 - grid布局
 - 父元素table-cell+vertical-align + 子元素inline-block/margin: auto
-## 不定宽高
+## 2、不定宽高
 - absolute（绝对定位）+translate(-50%, -50%)
 - 父元素table-cell+vertical-align + 子元素inline-block/margin: auto
 - flex布局
