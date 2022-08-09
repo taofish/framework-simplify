@@ -6,3 +6,6 @@
 
 ## layout
 [HTML布局](https://github.com/taofish/frontend-tech/blob/master/layout)
+
+## center
+[水平垂直居中](https://github.com/taofish/frontend-tech/blob/master/center)

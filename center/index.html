@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Center</title>
+    <style>
+    .parent {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        position: relative;
+    }
+
+    .parent__child {
+        width: 100px;
+        height: 100px;
+        margin-top: -50px;
+        margin-left: -50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: yellow;
+    }
+
+    .parent-v1 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        position: relative;
+    }
+
+    .parent-v1__child {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: yellow;
+    }
+
+    .parent-v2 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        position: relative;
+    }
+
+    .parent-v2__child {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        background: yellow;
+    }
+
+    .parent-v3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+    }
+
+    .parent-v3__child {
+        width: 100px;
+        height: 100px;
+        background: yellow;
+    }
+
+    .parent-v4 {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+    }
+
+    .parent-v4__child {
+        width: 100px;
+        height: 100px;
+        background: yellow;
+    }
+
+    .parent-v5 {
+        display: table-cell;
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .parent-v5__child {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        background: yellow;
+    }
+
+    .parent-v6 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        position: relative;
+    }
+
+    .parent-v6__child {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: yellow;
+    }
+
+    .parent-v7 {
+        display: table-cell;
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .parent-v7__child {
+        display: inline-block;
+        background: yellow;
+    }
+
+    .parent-v8 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+    }
+
+    .parent-v8__child {
+        background: yellow;
+    }
+
+    .parent-v9 {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+    }
+
+    .parent-v9__child {
+        background: yellow;
+    }
+    </style>
+</head>
+<body>
+<h1>水平垂直居中</h1>
+<h2>1、定宽高</h2>
+<p>1.1、absolute（绝对定位）+margin负值</p>
+<div class="parent">
+    <div class="parent__child"></div>
+</div>
+<p>1.2、absolute（绝对定位）+translate(-50%, -50%)</p>
+<div class="parent-v1">
+    <div class="parent-v1__child"></div>
+</div>
+<p>1.3、absolute（绝对定位）+top/right/bottom/left为0+margin:auto</p>
+<div class="parent-v2">
+    <div class="parent-v2__child"></div>
+</div>
+<p>1.4、flex布局</p>
+<div class="parent-v3">
+    <div class="parent-v3__child"></div>
+</div>
+<p>1.5、grid布局</p>
+<div class="parent-v4">
+    <div class="parent-v4__child"></div>
+</div>
+<p>1.6、父元素table-cell+vertical-align + 子元素inline-block/margin: auto</p>
+<div class="parent-v5">
+    <div class="parent-v5__child"></div>
+</div>
+<h2>2、不定宽高</h2>
+<p>2.1、absolute（绝对定位）+translate(-50%, -50%)</p>
+<div class="parent-v6">
+    <div class="parent-v6__child">我是内容</div>
+</div>
+<p>2.2、父元素table-cell+vertical-align + 子元素inline-block/margin: auto</p>
+<div class="parent-v7">
+    <div class="parent-v7__child">我是内容</div>
+</div>
+<p>2.3、flex布局</p>
+<div class="parent-v8">
+    <div class="parent-v8__child">我是内容</div>
+</div>
+<p>2.4、grid布局</p>
+<div class="parent-v9">
+    <div class="parent-v9__child">我是内容</div>
+</div>
+</body>
+</html>
