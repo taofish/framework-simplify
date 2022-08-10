@@ -1,4 +1,4 @@
-import * as utils from './index.js'
+import * as utils from './utils/index.js'
 
 const obj = {
     val: 1,
