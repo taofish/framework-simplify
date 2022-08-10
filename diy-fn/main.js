@@ -1,4 +1,6 @@
 import './utils/function.js'
+import './utils/index.js'
+import { diyNew } from './utils'
 
 const obj = {
     val: 1
@@ -17,10 +19,8 @@ console.log('testA.diyApply(obj, [3, 4])', testA.diyApply(obj, [
     4
 ]))
 
-
 const testB = testA.diyBind(obj, 5)
 console.log('testB(6)', testB(6))
-
 
 function bar(name, age) {
     this.habit = 'shopping'
@@ -42,3 +42,13 @@ console.log('diyBindFooObj', diyBindFooObj)
 console.log('diyBindFooObj constructor', diyBindFooObj.constructor)
 console.log('diyBindFooObj __proto__', diyBindFooObj.__proto__)
 bar.prototype.friend = '2'
+
+function testD(name, age) {
+    this.name = name
+    this.age = age
+}
+
+testD.prototype.jump = true
+
+const testE = diyNew(testD, 'tao', 20)
+console.log('testE', testE)
