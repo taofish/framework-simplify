@@ -14,4 +14,4 @@
 [内建函数实现](https://github.com/taofish/frontend-tech/tree/master/diy-lib)
 
 ## util-lib
-[工具函数实现](https://github.com/taofish/frontend-tech/tree/master/uti-lib)
+[工具函数实现](https://github.com/taofish/frontend-tech/tree/master/util-lib)
