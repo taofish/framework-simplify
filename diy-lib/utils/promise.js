@@ -1,6 +1,6 @@
 /**
  * promise.all
- * @param promises Iterator类型的参数（eg: Array，Map， Set，String）
+ * @param promises 迭代器（Iterator）（eg: Array，Map， Set，String）
  * @returns {Promise<unknown>}
  */
 Promise.diyAll = function(promises) {
