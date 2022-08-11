@@ -1,5 +1,5 @@
-import * as utils from './utils/index.js'
-import { EventEmitter } from './utils/event-emitter.js'
+import * as utils from '../utils/index.js'
+import { EventEmitter } from '../utils/event-emitter.js'
 
 const targetDom = document.getElementById('target')
 const cancelDom = document.getElementById('cancel')

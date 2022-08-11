@@ -1,6 +1,6 @@
-import './utils/function.js'
-import './utils/promise.js'
-import * as utils from './utils'
+import '../utils/function.js'
+import '../utils/promise.js'
+import * as utils from '../utils'
 
 // call
 // const obj = {
