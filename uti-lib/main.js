@@ -24,10 +24,22 @@ const cancelDom = document.getElementById('cancel')
 // obj.arr.push(4)
 // console.log('cloned', cloned)
 
+// let count = 0
+// const onClick = utils.debounce(function(e) {
+//     e.target.innerText = ++count
+// }, 300, true)
+// targetDom.addEventListener('click', onClick)
+// cancelDom.addEventListener('click', function() {
+//     onClick.cancel()
+// })
+
 let count = 0
-const onClick = utils.debounce(function(e) {
+const onClick = utils.throttle(function(e) {
     e.target.innerText = ++count
-}, 10000, true)
+}, 3000, {
+    leading: false,
+    trailing: true
+})
 targetDom.addEventListener('click', onClick)
 cancelDom.addEventListener('click', function() {
     onClick.cancel()

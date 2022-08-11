@@ -27,17 +27,16 @@ export function deepClone(target, map = new WeakMap()) {
 }
 
 /**
- * 防抖动函数
+ * 防抖动函数（防止函数被频繁执行）
+ * 非立即执行：停止触发并延迟时间结束后执行
+ * 立即执行：访问时立即执行，停止触发并延迟时间结束后再次触发才会再次执行
  * @param fn 调用函数
  * @param wait 等待时间
  * @param immediate 是否立即执行
  * @returns {function(...[*]): *}
  */
-export function debounce(fn, wait, immediate) {
+export function debounce(fn, wait = 0, immediate = false) {
     if (typeof fn !== 'function') throw new Error('Type Error')
-
-    wait = wait || 0
-    immediate = immediate || false
 
     let callThis, callArgs, callTime, result, timerId
 
@@ -52,9 +51,8 @@ export function debounce(fn, wait, immediate) {
         if (wait > passed) {
             timerId = setTimeout(onTimeout, wait - passed)
         } else {
-            timerId = null
             if (!immediate) invokeFn()
-            if (!timerId) callThis = callArgs = undefined
+            timerId = callThis = callArgs = undefined
         }
     }
     // 防抖动处理函数
@@ -74,4 +72,62 @@ export function debounce(fn, wait, immediate) {
         timerId = callThis = callArgs = undefined
     }
     return debounceHandle
+}
+
+/**
+ * 节流函数
+ * 原理：持续触发，延迟时间内只执行一次
+ * @param fn 调用函数
+ * @param wait 延迟时间
+ * @param leading 是否在在节流开始前调用，默认调用
+ * @param trailing 是否在在节流结束后调用，默认调用
+ * @returns {function(...[*]): *}
+ */
+export function throttle(fn, wait = 0, {
+    leading,
+    trailing
+} = {}) {
+    if (typeof fn !== 'function') throw new Error('Type Error')
+
+    const disabledLeading = leading === false // 禁止在节流开始前调用
+    const disabledTrailing = trailing === false // 禁止在节流结束后调用
+    let callThis, callArgs, invokeTime = 0, result, timerId
+    // 调用函数
+    const invokeFn = function() {
+        result = fn.apply(callThis, callArgs)
+    }
+    // 定时器回调函数
+    const onTimeout = function() {
+        invokeFn()
+        invokeTime = Date.now()
+        timerId = callThis = callArgs = undefined
+    }
+    // 节流处理函数
+    const throttleHandle = function(...args) {
+        callThis = this
+        callArgs = args
+        const now = Date.now()
+        // 使不会在节流开始前调用
+        if (disabledLeading && !invokeTime) invokeTime = now
+        // 下次调用剩余时间
+        const remaining = wait - (now - invokeTime)
+        if (remaining <= 0 || remaining > wait) {
+            // 没有剩余时间或系统时间被修改
+            invokeFn()
+            if (timerId) clearTimeout(timerId)
+            invokeTime = now
+            timerId = callThis = callArgs = undefined
+        } else if (!timerId && !disabledTrailing) {
+            // 延迟时间结束后调用
+            timerId = setTimeout(onTimeout, remaining)
+        }
+        return result
+    }
+    // 取消延迟
+    throttleHandle.cancel = function() {
+        if (timerId) clearTimeout(timerId)
+        invokeTime = 0
+        timerId = callThis = callArgs = undefined
+    }
+    return throttleHandle
 }
