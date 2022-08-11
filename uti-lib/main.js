@@ -3,6 +3,7 @@ import * as utils from './utils/index.js'
 const targetDom = document.getElementById('target')
 const cancelDom = document.getElementById('cancel')
 
+// 深拷贝
 // const obj = {
 //     val: 1,
 //     location: {
@@ -24,23 +25,25 @@ const cancelDom = document.getElementById('cancel')
 // obj.arr.push(4)
 // console.log('cloned', cloned)
 
-// let count = 0
-// const onClick = utils.debounce(function(e) {
-//     e.target.innerText = ++count
-// }, 300, true)
-// targetDom.addEventListener('click', onClick)
-// cancelDom.addEventListener('click', function() {
-//     onClick.cancel()
-// })
-
+// 防抖动
 let count = 0
-const onClick = utils.throttle(function(e) {
+const onClick = utils.debounce(function(e) {
     e.target.innerText = ++count
-}, 3000, {
-    leading: false,
-    trailing: true
-})
+}, 1000, true)
 targetDom.addEventListener('click', onClick)
 cancelDom.addEventListener('click', function() {
     onClick.cancel()
 })
+
+// 节流
+// let count = 0
+// const onClick = utils.throttle(function(e) {
+//     e.target.innerText = ++count
+// }, 3000, {
+//     leading: false,
+//     trailing: true
+// })
+// targetDom.addEventListener('click', onClick)
+// cancelDom.addEventListener('click', function() {
+//     onClick.cancel()
+// })

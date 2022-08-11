@@ -5,7 +5,6 @@
  * @returns {*}
  */
 Function.prototype.diyCall = function(context, ...args) {
-    console.log(args)
     if (typeof this !== 'function') throw new Error('Type Error')
 
     const tmpKey = Symbol() // 唯一的临时key

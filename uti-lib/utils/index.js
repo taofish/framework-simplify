@@ -28,8 +28,8 @@ export function deepClone(target, map = new WeakMap()) {
 
 /**
  * 防抖动（防止函数被频繁执行）
- * 非立即执行：停止触发并延迟时间结束后执行
- * 立即执行：访问时立即执行，停止触发并延迟时间结束后再次触发才会再次执行
+ * 非立即执行：停止触发并延迟时间结束后执行一次
+ * 立即执行：访问时立即执行一次
  * @param fn 调用函数
  * @param wait 等待时间
  * @param immediate 是否立即执行
@@ -75,7 +75,7 @@ export function debounce(fn, wait = 0, immediate = false) {
 }
 
 /**
- * 节流
+ * 节流（防止函数被频繁执行）
  * 原理：持续触发，延迟时间内只执行一次
  * @param fn 调用函数
  * @param wait 延迟时间
