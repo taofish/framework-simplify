@@ -1,6 +1,6 @@
 import './utils/function.js'
-import './utils/index.js'
-import { diyNew } from './utils'
+import './utils/promise.js'
+import * as utils from './utils'
 
 // call
 // const obj = {
@@ -60,6 +60,8 @@ import { diyNew } from './utils'
 // console.log('diyBindFooObj __proto__', diyBindFooObj.__proto__)
 // bar.prototype.friend = '2'
 //
+
+// new
 // function testD(name, age) {
 //     this.name = name
 //     this.age = age
@@ -67,5 +69,24 @@ import { diyNew } from './utils'
 //
 // testD.prototype.jump = true
 //
-// const testE = diyNew(testD, 'tao', 20)
+// const testE = utils.diyNew(testD, 'tao', 20)
 // console.log('testE', testE)
+
+// Promise.all
+let promises = [
+    new Promise((resolve, reject) => {
+        resolve('22')
+    }),
+    2
+]
+Promise.diyAll(promises).then(data => {
+    console.log('diyAll res', data)
+}).catch(e => {
+    console.log('diyAll res e', e)
+})
+
+Promise.all(promises).then(data => {
+    console.log('all res', data)
+}).catch(e => {
+    console.log('all res e', e)
+})
