@@ -1,5 +1,6 @@
 import * as utils from '../utils/index.js'
 import { EventEmitter } from '../utils/event-emitter.js'
+import { Scheduler } from '../utils/scheduler.js'
 
 const targetDom = document.getElementById('target')
 const cancelDom = document.getElementById('cancel')
@@ -49,21 +50,33 @@ const cancelDom = document.getElementById('cancel')
 //     onClick.cancel()
 // })
 
-const eventEmitter = new EventEmitter()
-const onTestE = function(...args) {
-    console.log('onTestE', args)
-    eventEmitter.off('test-e', onTestE)
-    console.log('eventEmitter', eventEmitter)
+// event-emitter
+// const eventEmitter = new EventEmitter()
+// const onTestE = function(...args) {
+//     console.log('onTestE', args)
+//     eventEmitter.off('test-e', onTestE)
+//     console.log('eventEmitter', eventEmitter)
+// }
+// const onTestB = function(...args) {
+//     console.log('onTestB', args)
+//     eventEmitter.off('test-e')
+//     console.log('eventEmitter', eventEmitter)
+// }
+// eventEmitter.on('test-e', onTestE)
+// eventEmitter.on('test-e', onTestB)
+// eventEmitter.on('test-b', onTestE)
+// console.log('eventEmitter', eventEmitter)
+// targetDom.addEventListener('click', () => {
+//     eventEmitter.emit('test-e', 'aa', 'bb')
+// })
+
+// scheduler
+const promiseMaker = time => new Promise(resolve => setTimeout(resolve, time))
+const scheduler = new Scheduler()
+const addTask = (time, order) => {
+    scheduler.add(() => promiseMaker(time).then(() => console.log(order)))
 }
-const onTestB = function(...args) {
-    console.log('onTestB', args)
-    eventEmitter.off('test-e')
-    console.log('eventEmitter', eventEmitter)
-}
-eventEmitter.on('test-e', onTestE)
-eventEmitter.on('test-e', onTestB)
-eventEmitter.on('test-b', onTestE)
-console.log('eventEmitter', eventEmitter)
-targetDom.addEventListener('click', () => {
-    eventEmitter.emit('test-e', 'aa', 'bb')
-})
+addTask(1000, 1)
+addTask(500, 2)
+addTask(400, 3)
+addTask(300, 4)

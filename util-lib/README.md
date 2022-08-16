@@ -9,3 +9,7 @@
 ## utils/event-emitter.js
 
 封装事件触发与事件监听器功能
+
+## utils/scheduler.js
+
+带并发限制的任务调度器
