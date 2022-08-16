@@ -1,5 +1,6 @@
 import '../utils/function.js'
 import '../utils/promise.js'
+import '../utils/array.js'
 import * as utils from '../utils'
 
 // call
@@ -62,15 +63,15 @@ import * as utils from '../utils'
 //
 
 // new
-function testD(name, age) {
-    this.name = name
-    this.age = age
-}
-
-testD.prototype.jump = true
-
-const testE = utils.diyNew(testD, 'tao', 20)
-console.log('testE', testE)
+// function testD(name, age) {
+//     this.name = name
+//     this.age = age
+// }
+//
+// testD.prototype.jump = true
+//
+// const testE = utils.diyNew(testD, 'tao', 20)
+// console.log('testE', testE)
 
 // Promise.all
 // let promises = [
@@ -100,3 +101,14 @@ console.log('testE', testE)
 // console.log(utils.diyInstanceof(car, Car))
 // // console.log(utils.diyInstanceof(car, 1))
 // // console.log(utils.diyInstanceof(car, Object))
+
+// Array.prototype.reduce
+const arr = [
+    1,
+    2,
+    3,
+    4
+]
+console.log(arr.diyReduce(function(acc, cur, i) {
+    return acc + cur
+}, 10))
