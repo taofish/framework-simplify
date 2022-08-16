@@ -5,6 +5,7 @@
 - deepClone（深拷贝）
 - debounce（防抖动）
 - throttle（节流）
+- uniqueArray（数组去重）
 
 ## utils/event-emitter.js
 

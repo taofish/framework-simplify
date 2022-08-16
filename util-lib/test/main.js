@@ -71,12 +71,24 @@ const cancelDom = document.getElementById('cancel')
 // })
 
 // scheduler
-const promiseMaker = time => new Promise(resolve => setTimeout(resolve, time))
-const scheduler = new Scheduler()
-const addTask = (time, order) => {
-    scheduler.add(() => promiseMaker(time).then(() => console.log(order)))
-}
-addTask(1000, 1)
-addTask(500, 2)
-addTask(400, 3)
-addTask(300, 4)
+// const promiseMaker = time => new Promise(resolve => setTimeout(resolve, time))
+// const scheduler = new Scheduler()
+// const addTask = (time, order) => {
+//     scheduler.add(() => promiseMaker(time).then(() => console.log(order)))
+// }
+// addTask(1000, 1)
+// addTask(500, 2)
+// addTask(400, 3)
+// addTask(300, 4)
+
+// uniqueArray
+const arr = [
+    1,
+    2,
+    3,
+    2,
+    1,
+    5
+]
+
+console.log(arr, utils.uniqueArray(arr))

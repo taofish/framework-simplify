@@ -131,3 +131,14 @@ export function throttle(fn, wait = 0, {
     }
     return throttleHandle
 }
+
+/**
+ * 数组去重
+ * @param arr
+ * @returns {*}
+ */
+export function uniqueArray(arr) {
+    return arr.filter((item, index) => {
+        return arr.indexOf(item) === index
+    })
+}
