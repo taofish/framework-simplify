@@ -62,31 +62,41 @@ import * as utils from '../utils'
 //
 
 // new
-// function testD(name, age) {
-//     this.name = name
-//     this.age = age
-// }
-//
-// testD.prototype.jump = true
-//
-// const testE = utils.diyNew(testD, 'tao', 20)
-// console.log('testE', testE)
+function testD(name, age) {
+    this.name = name
+    this.age = age
+}
+
+testD.prototype.jump = true
+
+const testE = utils.diyNew(testD, 'tao', 20)
+console.log('testE', testE)
 
 // Promise.all
-let promises = [
-    new Promise((resolve, reject) => {
-        resolve('22')
-    }),
-    2
-]
-Promise.diyAll(promises).then(data => {
-    console.log('diyAll res', data)
-}).catch(e => {
-    console.log('diyAll res e', e)
-})
+// let promises = [
+//     new Promise((resolve, reject) => {
+//         resolve('22')
+//     }),
+//     2
+// ]
+// Promise.diyAll(promises).then(data => {
+//     console.log('diyAll res', data)
+// }).catch(e => {
+//     console.log('diyAll res e', e)
+// })
+//
+// Promise.all(promises).then(data => {
+//     console.log('all res', data)
+// }).catch(e => {
+//     console.log('all res e', e)
+// })
 
-Promise.all(promises).then(data => {
-    console.log('all res', data)
-}).catch(e => {
-    console.log('all res e', e)
-})
+// instanceof
+// function Car() {
+//
+// }
+//
+// const car = new Car()
+// console.log(utils.diyInstanceof(car, Car))
+// // console.log(utils.diyInstanceof(car, 1))
+// // console.log(utils.diyInstanceof(car, Object))
