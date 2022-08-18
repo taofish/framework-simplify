@@ -1,11 +1,11 @@
 const path = require('path')
 
 module.exports = {
-    mode: 'development', // production、development
+    mode: 'production', // production、development
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].[chunkhash:6].js'
     },
     resolveLoader: {
         modules: [
@@ -19,7 +19,7 @@ module.exports = {
                 test: /utils\/test\.js$/,
                 use: [
                     {
-                        loader: 'test',
+                        loader: 'test-loader',
                         options: {
                             tao: true
                         }
@@ -27,5 +27,11 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    optimization: {
+        runtimeChunk: {
+            name: 'runtime'
+        }
+    },
+    recordsPath: path.join(__dirname, 'dist/records.json')
 }

@@ -11,11 +11,12 @@ const schema = {
     }
 }
 
-module.exports = function(source, map, meta) {
-    const options = getOptions(this)
+module.exports = function(source) {
+    // const options = getOptions(this)
+    const options = this.getOptions(schema)
     console.log('options', options)
 
-    console.log(source, map, meta)
+    console.log(source)
 
     // validateOptions(schema, options, 'Example Loader')
 
