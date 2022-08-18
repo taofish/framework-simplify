@@ -9,7 +9,7 @@ class RmDistPlugin {
     }
 
     apply(compiler) {
-        compiler.hooks.emit.tap(pluginName, (compilation) => {
+        compiler.hooks.emit.tap(pluginName, () => {
             if (this.path && fs.existsSync(this.path)) {
                 try {
                     fs.rmSync(this.path, {
