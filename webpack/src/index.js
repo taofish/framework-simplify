@@ -1,3 +1,4 @@
-import { test } from './utils/test'
+import { testUtil } from './utils/test-util'
+import data from './jtxt/test.atxt'
 
-test()
+testUtil(data)

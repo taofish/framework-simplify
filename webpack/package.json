@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "profile": "webpack --config webpack.config.js --mode production --profile --json > stats.json"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "loader-utils": "^2.0.0",
-    "schema-utils": "^3.0.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   }

@@ -1,7 +1,8 @@
 const path = require('path')
+const RmDistPlugin = require('./plugins/rm-dist-plugin')
 
 module.exports = {
-    mode: 'production', // production、development
+    mode: 'development', // production、development
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -16,10 +17,10 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /utils\/test\.js$/,
+                test: /\.atxt$/,
                 use: [
                     {
-                        loader: 'test-loader',
+                        loader: 'atxt-loader',
                         options: {
                             tao: true
                         }
@@ -33,5 +34,10 @@ module.exports = {
             name: 'runtime'
         }
     },
-    recordsPath: path.join(__dirname, 'dist/records.json')
+    recordsPath: path.resolve(__dirname, 'dist/records.json'),
+    plugins: [
+        new RmDistPlugin({
+            path: path.resolve(__dirname, 'dist')
+        })
+    ]
 }
