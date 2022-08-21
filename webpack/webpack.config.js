@@ -2,17 +2,19 @@ const path = require('path')
 const RmDistPlugin = require('./plugins/rm-dist-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 
 module.exports = function (env, args) {
     const isPrd = args.mode === 'production'
-    const fileName = isPrd ? '[name].[chunkhash:6].js' : '[name].js'
+    const fileName = isPrd ? '[name].[chunkhash:6]' : '[name]'
     return {
         // mode: 'development', // production、development
         entry: './src/index.js',
         output: {
             path: path.resolve(__dirname, 'dist'),
-            filename: fileName,
-            chunkFilename: `js/${fileName}`,
+            filename: `js/${fileName}.js`,
+            chunkFilename: `js/${fileName}.js`,
         },
         resolveLoader: {
             modules: [
@@ -32,6 +34,10 @@ module.exports = function (env, args) {
                             presets: ['@babel/preset-env']
                         }
                     }
+                },
+                {
+                    test: /\.css$/,
+                    use: [MiniCssExtractPlugin.loader, 'css-loader']
                 },
                 {
                     test: /\.atxt$/,
@@ -58,7 +64,8 @@ module.exports = function (env, args) {
                         chunks: 'all'
                     }
                 }
-            }
+            },
+            minimizer: [`...`, new CssMinimizerPlugin()]
         },
         // recordsPath: path.resolve(__dirname, 'dist/records.json'),
         plugins: [
@@ -66,7 +73,11 @@ module.exports = function (env, args) {
                 path: path.resolve(__dirname, 'dist')
             }),
             new HtmlWebpackPlugin(),
-            new LodashModuleReplacementPlugin()
+            new LodashModuleReplacementPlugin(),
+            new MiniCssExtractPlugin({
+                filename: `css/${fileName}.css`,
+                chunkFilename: `css/${fileName}.css`,
+            })
         ],
         devServer: {
             compress: true,
