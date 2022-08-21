@@ -10,9 +10,9 @@ class RmDistPlugin {
 
     apply(compiler) {
         compiler.hooks.emit.tap(pluginName, () => {
-            if (this.path && fs.existsSync(this.path)) {
+            if (compiler.options.mode === 'production' && this.path && fs.existsSync(this.path)) {
                 try {
-                    fs.rmSync(this.path, {
+                    fs.rmdirSync(this.path, {
                         recursive: true
                     })
                     console.log(`目录'${this.path}'删除成功!`)

@@ -1,4 +1,5 @@
-import { testUtil } from './utils/test-util'
 import data from './jtxt/test.atxt'
 
-testUtil(data)
+import(/* webpackChunkName: "test-util" */'./utils/test-util').then(({ testUtil }) => {
+    testUtil(data)
+})
