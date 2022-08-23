@@ -42,7 +42,10 @@ export class Stack {
         if (this.isEmpty()) {
             console.log('栈已空！')
         } else {
-            return this._data[this._top--]
+            const ret = this._data[this._top]
+            delete this._data[this._top]
+            this._top--
+            return ret
         }
     }
     
