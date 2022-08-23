@@ -13,17 +13,36 @@
 // stack.pop()
 // stack.display()
 
-import { Queue } from '../utils/queue.js'
+// import { Queue } from '../utils/queue.js'
+//
+// const queue = new Queue(10)
+// console.log('队列空：', queue.isEmpty())
+// for (let i = 0; i < 10; i++) {
+//     queue.in(i)
+// }
+// queue.display()
+// console.log('出一次队')
+// queue.out()
+// console.log('队头元素：', queue.getHead())
+// console.log('出一次队')
+// queue.out()
+// queue.display()
 
-const queue = new Queue(10)
-console.log('队列空：', queue.isEmpty())
-for (let i = 0; i < 10; i++) {
-    queue.in(i)
+import { LkNode, DoubleLinkedList } from '../utils/linked-list.js'
+
+const doubleLinkedList = new DoubleLinkedList()
+console.log('链表空：', doubleLinkedList.isEmpty())
+console.log('在链表尾部添加元素')
+for (let i = 0; i < 5; i++) {
+    doubleLinkedList.append(new LkNode(i))
 }
-queue.display()
-console.log('出一次队')
-queue.out()
-console.log('队头元素：', queue.getHead())
-console.log('出一次队')
-queue.out()
-queue.display()
+doubleLinkedList.display()
+console.log('在某个节点之前前插入元素')
+const node5 = new LkNode(5)
+doubleLinkedList.insertBefore(node5, doubleLinkedList.getHead())
+doubleLinkedList.insertBefore(new LkNode(6), doubleLinkedList.getHead())
+doubleLinkedList.insertBefore(new LkNode(7), node5)
+doubleLinkedList.display()
+console.log('删除一个元素')
+doubleLinkedList.remove(node5)
+doubleLinkedList.display()
