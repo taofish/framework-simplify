@@ -33,7 +33,7 @@ import { LkNode, DoubleLinkedList } from '../utils/linked-list.js'
 const doubleLinkedList = new DoubleLinkedList()
 console.log('链表空：', doubleLinkedList.isEmpty())
 console.log('在链表尾部添加元素')
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 2; i++) {
     doubleLinkedList.append(new LkNode(i))
 }
 doubleLinkedList.display()
@@ -46,3 +46,4 @@ doubleLinkedList.display()
 console.log('删除一个元素')
 doubleLinkedList.remove(node5)
 doubleLinkedList.display()
+console.log('链表元素个数：', doubleLinkedList.size)

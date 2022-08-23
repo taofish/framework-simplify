@@ -12,7 +12,7 @@ export class LkNode {
 }
 
 /**
- * 双向链表
+ * 双向链表（支持循环）
  * 特点：从任意一个节点开始，都可以很方便的访问它的前驱节点和后继节点
  */
 export class DoubleLinkedList {
@@ -34,10 +34,15 @@ export class DoubleLinkedList {
      */
     append(node) {
         if (this.isEmpty()) {
-            this._head = this._tail = node
+            node._prior = node
+            node._next = node
+            this._head = node
+            this._tail = node
         } else {
             node._prior = this._tail
+            node._next = this._tail._next
             this._tail._next = node
+            this._head._prior = node
             this._tail = node
         }
         this.size++
@@ -54,8 +59,9 @@ export class DoubleLinkedList {
         } else {
             node._prior = refNode._prior
             node._next = refNode
-            refNode._prior ? (refNode._prior._next = node) : (this._head = node)
+            refNode._prior._next = node
             refNode._prior = node
+            this._head === refNode && (this._head = node)
             this.size++
         }
     }
@@ -97,7 +103,7 @@ export class DoubleLinkedList {
         let head = this._head
         while (head) {
             arr.push(head.data)
-            head = head._next
+            head === this._tail ? (head = null) : (head = head._next)
         }
         console.log(arr.join(','))
     }
