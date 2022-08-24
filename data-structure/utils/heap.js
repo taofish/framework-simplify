@@ -123,7 +123,15 @@ export class MinHeap {
     }
     
     /**
-     * 添加元素
+     * 是否是空堆
+     * @returns {boolean}
+     */
+    isEmpty() {
+        return this.size === 0
+    }
+    
+    /**
+     * 添加元素（向堆尾添加，然后向上调整堆）
      * @param item
      */
     add(item) {
@@ -133,11 +141,11 @@ export class MinHeap {
     }
     
     /**
-     * 弹出堆顶元素
+     * 弹出堆顶元素，然后向下调整堆
      * @returns {*}
      */
     pop() {
-        if (!this.size) return
+        if (!this.isEmpty()) return
         const ret = this.#data[0]
         this.#data[0] = this.#data[this.size - 1]
         this.#data.length--
