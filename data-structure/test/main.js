@@ -48,19 +48,32 @@
 // doubleLinkedList.display()
 // console.log('链表元素个数：', doubleLinkedList.size)
 
-import { HashTable } from '../utils/hash-table.js'
+// import { HashTable } from '../utils/hash-table.js'
+//
+// const hashTable = new HashTable()
+// for (let i = 0; i < 2; i++) {
+//     hashTable.put(`hash-key-${i}`, `hash-value-${i}`)
+// }
+// hashTable.display()
+// hashTable.put('哈希表', 'hash-table')
+// hashTable.display()
+// hashTable.put('数据结构', 'data-structure')
+// hashTable.display()
+// hashTable.remove('哈希表')
+// hashTable.display()
+// console.log(hashTable.get('数据结构'))
+// console.log(hashTable.get('哈希表'))
+// console.log(hashTable.get('hash-key-1'))
 
-const hashTable = new HashTable()
-for (let i = 0; i < 2; i++) {
-    hashTable.put(`hash-key-${i}`, `hash-value-${i}`)
+import { MinHeap, HeapNode } from '../utils/heap.js'
+
+const minHeap = new MinHeap()
+for (let i = 10; i > 8; i--) {
+    minHeap.add(new HeapNode(i, i))
 }
-hashTable.display()
-hashTable.put('哈希表', 'hash-table')
-hashTable.display()
-hashTable.put('数据结构', 'data-structure')
-hashTable.display()
-hashTable.remove('哈希表')
-hashTable.display()
-console.log(hashTable.get('数据结构'))
-console.log(hashTable.get('哈希表'))
-console.log(hashTable.get('hash-key-1'))
+minHeap.display()
+minHeap.add(new HeapNode(1, 'one'))
+minHeap.display()
+console.log(minHeap.getTop())
+console.log(minHeap.pop())
+minHeap.display()
