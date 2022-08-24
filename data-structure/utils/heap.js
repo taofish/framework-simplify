@@ -13,6 +13,9 @@ export class HeapNode {
 
 /**
  * 最小堆
+ * 特点：
+ * - 最小堆每个节点都不小于父节点
+ * - 最小堆总是一棵完全二叉树
  * 作用：实现优先队列，动态处理最小优先级的数据
  */
 export class MinHeap {
@@ -20,6 +23,15 @@ export class MinHeap {
     
     get size() {
         return this.#data.length
+    }
+    
+    /**
+     * 最后一个非叶子节点
+     * n / 2 + 1
+     * @returns {number}
+     */
+    get lastNonLeaf() {
+        return Math.floor(this.size / 2) - 1
     }
     
     /**
@@ -84,25 +96,25 @@ export class MinHeap {
      * @param i
      */
     #adjustDown(i) {
-        while (i < this.size) {
+        while (i <= this.lastNonLeaf) {
             const leftChild = MinHeap.#leftChild(i)
             const rightChild = MinHeap.#rightChild(i)
             const leftChildNode = this.#data[leftChild]
             const rightChildNode = this.#data[rightChild]
             const currentNode = this.#data[i]
-            if (!leftChildNode || !rightChildNode) {
-                break
-            } else if (leftChildNode.sort < rightChildNode.sort) {
-                if (leftChildNode.sort < currentNode.sort) {
-                    this.#swap(i, leftChild)
-                    i = leftChild
+            
+            // 最有一个叶子节点可能只有左节点
+            if (rightChildNode && rightChildNode.sort < leftChildNode.sort) {
+                if (rightChildNode.sort < currentNode.sort) {
+                    this.#swap(i, rightChild)
+                    i = rightChild
                 } else {
                     break
                 }
             } else {
-                if (rightChildNode.sort < currentNode.sort) {
-                    this.#swap(i, rightChild)
-                    i = rightChild
+                if (leftChildNode.sort < currentNode.sort) {
+                    this.#swap(i, leftChild)
+                    i = leftChild
                 } else {
                     break
                 }
@@ -125,9 +137,10 @@ export class MinHeap {
      * @returns {*}
      */
     pop() {
+        if (!this.size) return
         const ret = this.#data[0]
         this.#data[0] = this.#data[this.size - 1]
-        delete this.#data[this.size - 1]
+        this.#data.length--
         this.#adjustDown(0)
         return ret
     }
@@ -147,13 +160,4 @@ export class MinHeap {
         console.log('最小堆元素：')
         console.log(this.#data.map(item => JSON.stringify(item)).join(','))
     }
-}
-
-/**
- * 最后一个非叶子节点
- * n / 2 + 1
- * @returns {number}
- */
-export function lastNonLeaf(n) {
-    return Math.floor(n / 2) - 1
 }

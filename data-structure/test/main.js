@@ -68,12 +68,14 @@
 import { MinHeap, HeapNode } from '../utils/heap.js'
 
 const minHeap = new MinHeap()
-for (let i = 10; i > 8; i--) {
+for (let i = 10; i > 3; i--) {
     minHeap.add(new HeapNode(i, i))
 }
 minHeap.display()
-minHeap.add(new HeapNode(1, 'one'))
+minHeap.add(new HeapNode(20, 'one'))
 minHeap.display()
 console.log(minHeap.getTop())
 console.log(minHeap.pop())
+console.log(minHeap.pop())
 minHeap.display()
+console.log(minHeap)
