@@ -28,22 +28,39 @@
 // queue.out()
 // queue.display()
 
-import { LkNode, DoubleLinkedList } from '../utils/linked-list.js'
+// import { LkNode, DoubleLinkedList } from '../utils/linked-list.js'
+//
+// const doubleLinkedList = new DoubleLinkedList()
+// console.log('链表空：', doubleLinkedList.isEmpty())
+// console.log('在链表尾部添加元素')
+// for (let i = 0; i < 2; i++) {
+//     doubleLinkedList.append(new LkNode(i))
+// }
+// doubleLinkedList.display()
+// console.log('在某个节点之前前插入元素')
+// const node5 = new LkNode(5)
+// doubleLinkedList.insertBefore(node5, doubleLinkedList.getHead())
+// doubleLinkedList.insertBefore(new LkNode(6), doubleLinkedList.getHead())
+// doubleLinkedList.insertBefore(new LkNode(7), node5)
+// doubleLinkedList.display()
+// console.log('删除一个元素')
+// doubleLinkedList.remove(node5)
+// doubleLinkedList.display()
+// console.log('链表元素个数：', doubleLinkedList.size)
 
-const doubleLinkedList = new DoubleLinkedList()
-console.log('链表空：', doubleLinkedList.isEmpty())
-console.log('在链表尾部添加元素')
+import { HashTable } from '../utils/hash-table.js'
+
+const hashTable = new HashTable()
 for (let i = 0; i < 2; i++) {
-    doubleLinkedList.append(new LkNode(i))
+    hashTable.put(`hash-key-${i}`, `hash-value-${i}`)
 }
-doubleLinkedList.display()
-console.log('在某个节点之前前插入元素')
-const node5 = new LkNode(5)
-doubleLinkedList.insertBefore(node5, doubleLinkedList.getHead())
-doubleLinkedList.insertBefore(new LkNode(6), doubleLinkedList.getHead())
-doubleLinkedList.insertBefore(new LkNode(7), node5)
-doubleLinkedList.display()
-console.log('删除一个元素')
-doubleLinkedList.remove(node5)
-doubleLinkedList.display()
-console.log('链表元素个数：', doubleLinkedList.size)
+hashTable.display()
+hashTable.put('哈希表', 'hash-table')
+hashTable.display()
+hashTable.put('数据结构', 'data-structure')
+hashTable.display()
+hashTable.remove('哈希表')
+hashTable.display()
+console.log(hashTable.get('数据结构'))
+console.log(hashTable.get('哈希表'))
+console.log(hashTable.get('hash-key-1'))
