@@ -324,7 +324,7 @@ export class MaxHeap {
      * 显示堆元素
      */
     display() {
-        console.log('最小堆元素：')
+        console.log('最大堆元素：')
         console.log(this.#data.map(item => JSON.stringify(item)).join(','))
     }
 }
