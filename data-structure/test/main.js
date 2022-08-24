@@ -65,20 +65,38 @@
 // console.log(hashTable.get('哈希表'))
 // console.log(hashTable.get('hash-key-1'))
 
-import { MinHeap, HeapNode } from '../utils/heap.js'
+// import { MinHeap, HeapNode } from '../utils/heap.js'
+//
+// const minHeap = new MinHeap()
+// console.log('是否空堆：', minHeap.isEmpty())
+// for (let i = 10; i > 3; i--) {
+//     minHeap.add(new HeapNode(i, i))
+// }
+// minHeap.display()
+// minHeap.add(new HeapNode(20, 'one'))
+// minHeap.display()
+// minHeap.add(new HeapNode(1, 'one'))
+// minHeap.display()
+// console.log('minHeap.getTop()', minHeap.getTop())
+// console.log('minHeap.pop()', minHeap.pop())
+// console.log('minHeap.pop()', minHeap.pop())
+// minHeap.display()
+// console.log(minHeap)
 
-const minHeap = new MinHeap()
-console.log('是否空堆：', minHeap.isEmpty())
+import { MaxHeap, HeapNode } from '../utils/heap.js'
+
+const maxHeap = new MaxHeap()
+console.log('是否空堆：', maxHeap.isEmpty())
 for (let i = 10; i > 3; i--) {
-    minHeap.add(new HeapNode(i, i))
+    maxHeap.add(new HeapNode(i, i))
 }
-minHeap.display()
-minHeap.add(new HeapNode(20, 'one'))
-minHeap.display()
-minHeap.add(new HeapNode(1, 'one'))
-minHeap.display()
-console.log('minHeap.getTop()', minHeap.getTop())
-console.log('minHeap.pop()', minHeap.pop())
-console.log('minHeap.pop()', minHeap.pop())
-minHeap.display()
-console.log(minHeap)
+maxHeap.display()
+maxHeap.add(new HeapNode(20, 'one'))
+maxHeap.display()
+maxHeap.add(new HeapNode(1, 'one'))
+maxHeap.display()
+console.log('minHeap.getTop()', maxHeap.getTop())
+console.log('minHeap.pop()', maxHeap.pop())
+console.log('minHeap.pop()', maxHeap.pop())
+maxHeap.display()
+console.log(maxHeap)
