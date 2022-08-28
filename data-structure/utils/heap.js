@@ -185,8 +185,8 @@ export class MaxHeap {
     }
     
     /**
-     * 最后一个非叶子节点
-     * n / 2 - 1
+     * 最后一个非叶子节点的索引
+     * n / 2 - 1，先除再减，向下取整
      * @returns {number}
      */
     get lastNonLeaf() {
@@ -194,8 +194,8 @@ export class MaxHeap {
     }
     
     /**
-     * 父节点
-     * (i - 1) / 2
+     * 父节点的索引
+     * (i - 1) / 2，先减再除，向下取整
      * @param i
      * @returns {number|number}
      */
