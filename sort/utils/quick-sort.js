@@ -22,10 +22,10 @@ function swap(arr, i, j) {
  * @returns {number}
  */
 function partition(arr, left, right) {
-    let pivot = left
-    let pivotVal = arr[pivot]
-    for (let i = pivot++; i <= right; i++) {
-        if (arr[i] < pivotVal) swap(arr, pivot++, i)
+    let pivot = left + 1
+    let baseVal = arr[left]
+    for (let i = pivot; i <= right; i++) {
+        if (arr[i] < baseVal) swap(arr, pivot++, i)
     }
     swap(arr, left, --pivot)
     return pivot
