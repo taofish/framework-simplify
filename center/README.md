@@ -12,6 +12,3 @@
 - flex布局
 - grid布局
 
-# 参考 
-- https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html
-- https://juejin.cn/post/6844903982960214029

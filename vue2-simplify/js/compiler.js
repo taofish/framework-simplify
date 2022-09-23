@@ -2,8 +2,8 @@ import { Watcher } from './watcher.js'
 
 /**
  * 编译器
- * - 编译模版，把插值表达式、指令等转换为Watcher（订阅者）
- * - 接收Dep（发布者-数据）通知，更新视图
+ * - 编译模版，把插值表达式、指令等转换为Watcher（观察者）
+ * - 接收Dep（被观察者-数据）通知，更新视图
  */
 export class Compiler {
     vm = null

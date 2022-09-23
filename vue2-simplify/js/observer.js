@@ -2,9 +2,9 @@ import { Dep } from './dep.js'
 
 /**
  * 数据劫持
- * - 遍历数据，使用Dep把数据转换为发布者
+ * - 遍历数据，使用Dep把数据转换为被观察者
  * - 遍历数据，把数据转换为响应式（getter/setter）
- * - 数据变化时，使用Dep（发布者）给Watcher（订阅者）发送通知
+ * - 数据变化时，使用Dep（被观察者）给Watcher（观察者）发送通知
  */
 export class Observer {
     constructor(data) {
@@ -50,7 +50,7 @@ export class Observer {
                 val = newValue
                 // 如果新值是对象的话，递归调用转换为响应式对象
                 that.walk(newValue)
-                // 向所有订阅者发布通知
+                // 向所有观察者发布通知
                 dep.notify()
             }
         })
